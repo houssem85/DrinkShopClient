@@ -1,0 +1,63 @@
+package com.programasoft.drinkshop.retrofit;
+
+import com.programasoft.drinkshop.model.banner;
+import com.programasoft.drinkshop.model.checkExistUserResponse;
+import com.programasoft.drinkshop.model.drink;
+import com.programasoft.drinkshop.model.user;
+import com.programasoft.drinkshop.model.menu;
+
+import java.util.List;
+
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.Query;
+
+
+/**
+ * Created by ASUS on 16/12/2018.
+ */
+
+public interface IDrinkShopApi {
+
+    @FormUrlEncoded
+    @POST("checkExistUser.php")
+    Call<checkExistUserResponse> checkExistUser(@Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("RegisterUser.php")
+    Call<user> RegisterUser(@Field("phone") String phone,@Field("name") String name,@Field("birthdate") String birthdate,@Field("address") String address);
+
+    @FormUrlEncoded
+    @POST("getUserInformation.php")
+    Call<user> getUserInformation(@Field("phone") String phone);
+
+
+    @GET("GetBanners.php")
+    io.reactivex.Observable<List<banner>> GetBanners();
+
+    @GET("GetMenu.php")
+    io.reactivex.Observable<List<menu>> GetMenu();
+
+    @FormUrlEncoded
+    @POST("GetDrinks.php")
+    io.reactivex.Observable<List<drink>> GetDrinks(@Field("menu_id") String menu_id);
+
+    @Multipart
+    @POST("UploadAvar.php")
+    Call<String> UploadAvar(@Part("phone") RequestBody phone, @Part MultipartBody.Part file);
+
+    @GET("GetAllDrinks.php")
+    io.reactivex.Observable<List<drink>> GetAllDrinks();
+
+    @FormUrlEncoded
+    @POST("InsertNewOrder.php")
+    Call<String> InsertNewOrder(@Field("status") boolean status,@Field("price") double price,@Field("amount") int amount,@Field("name") String name,@Field("ice") int ice,@Field("sugar") int sugar,@Field("link") String link,@Field("comment") String comment,@Field("id_user") String id_user,@Field("address") String address);
+}

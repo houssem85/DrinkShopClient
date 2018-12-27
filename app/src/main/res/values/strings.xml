@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Drink Shop</string>
+    <string name="FACEBOOK_APP_ID">125941405011394</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">4ae9e205f8a0e03fe755966e28bd8867</string>
+    <string name="ak_login_protocol_scheme">125941405011394</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
