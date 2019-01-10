@@ -4,10 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="8dp"
     app:cardBackgroundColor="#fff"
-    android:layout_margin="5dp"
+    android:layout_marginBottom="2dp"
     >
     <RelativeLayout
         android:id="@+id/View_Background"
@@ -57,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+
                 android:orientation="vertical">
 
                 <TextView
@@ -66,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:text="Name prodiut"
                     android:textColor="#000"
-                    android:textSize="17sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/price"
@@ -75,11 +73,11 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:background="@drawable/text_round"
-                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:text="3.75dt"
-                    android:textColor="#fff"
-                    android:textSize="12sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/description"
@@ -92,7 +90,9 @@
                     android:id="@+id/btn_add_moin"
                     android:layout_width="100dp"
                     android:layout_height="22dp"
-
+                    app:backGroundColor="#B301a9e0"
+                    app:textColor="#fff"
+                     android:layout_marginTop="4dp"
                     >
 
                 </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>

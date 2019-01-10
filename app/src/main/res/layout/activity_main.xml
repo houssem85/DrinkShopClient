@@ -5,21 +5,97 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.programasoft.drinkshop.MainActivity"
-    android:background="@drawable/main_back"
+    android:background="@color/gris"
+
     >
 
-    <Button
+
+
+
+
+
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:text="Continue"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="50dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="CONTINUE"
-        />
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#2B78C2"
+                android:onClick="CONTINUE"
+                android:text="Continue"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="30dp"
+                />
+            <TextView
+                android:gravity="center"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+
+                android:layout_marginEnd="8dp"
+                android:text="Drink shop"
+                android:textColor="#262626"
+                android:textSize="20sp"
+                 />
+            <TextView
+                android:id="@+id/text_desc"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="8dp"
+
+                android:text="ECommerce-App-Android"
+                android:textColor="#817F7F"
+                android:textSize="17sp"
+                />
+            <ImageView
+                android:layout_marginTop="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo"
+                android:layout_below="@id/text_desc"
+                android:layout_marginBottom="120dp"
+                />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>

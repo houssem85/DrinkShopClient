@@ -11,14 +11,20 @@ import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Streaming;
+import retrofit2.http.Url;
 
 
 /**
@@ -34,6 +40,11 @@ public interface IDrinkShopApi {
     @FormUrlEncoded
     @POST("RegisterUser.php")
     Call<user> RegisterUser(@Field("phone") String phone,@Field("name") String name,@Field("birthdate") String birthdate,@Field("address") String address);
+
+
+
+    @POST("RegisterUser2.php")
+    Call<user> RegisterUser2(@Body user user);
 
     @FormUrlEncoded
     @POST("getUserInformation.php")
@@ -60,4 +71,14 @@ public interface IDrinkShopApi {
     @FormUrlEncoded
     @POST("InsertNewOrder.php")
     Call<String> InsertNewOrder(@Field("status") boolean status,@Field("price") double price,@Field("amount") int amount,@Field("name") String name,@Field("ice") int ice,@Field("sugar") int sugar,@Field("link") String link,@Field("comment") String comment,@Field("id_user") String id_user,@Field("address") String address);
+
+    @GET("user_avar/{image_name}")
+    Call<ResponseBody> DowleadPhotoProfil(@Path("image_name") String image_name);
+
+    @Streaming
+    @GET("user_avar/{image_name}")
+    Call<ResponseBody> DowleadPhotoProfilStrea(@Path("image_name") String image_name);
+
+
+
 }

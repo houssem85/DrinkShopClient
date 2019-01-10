@@ -1,6 +1,7 @@
 package com.programasoft.drinkshop;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +49,9 @@ private IDrinkShopApi Mservice;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
         Mservice=Common.getApi();
         recyclerView=(RecyclerView)this.findViewById(R.id.list_cart);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -178,5 +183,10 @@ private IDrinkShopApi Mservice;
         builder.setView(v);
         AlertDialog dialog=builder.create();
         dialog.show();
+    }
+
+    public void back(View view) {
+        Intent i=new Intent(this,HomeActivity.class);
+        this.startActivity(i);
     }
 }

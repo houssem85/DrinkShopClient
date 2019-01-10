@@ -12,6 +12,13 @@ public class user {
     private String error;
     private String avat;
 
+    public user(String phone, String name, String birthdate, String address) {
+        this.phone = phone;
+        this.name = name;
+        this.birthdate = birthdate;
+        this.address = address;
+    }
+
     public String getAvat() {
         return avat;
     }

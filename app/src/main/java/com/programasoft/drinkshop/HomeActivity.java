@@ -14,6 +14,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -67,7 +68,7 @@ public class HomeActivity extends AppCompatActivity
     private static final int CODE_GALLERY =5000 ;
     private TextView txt_name;
     private TextView txt_phone;
-    private SliderLayout sliderLayout;
+   // private SliderLayout sliderLayout;
     private IDrinkShopApi mService;
     private CompositeDisposable compositeDisposable;
     private RecyclerView menus;
@@ -108,10 +109,11 @@ public class HomeActivity extends AppCompatActivity
         });
         txt_name.setText(Common.CorrentUser.getName());
         txt_phone.setText(Common.CorrentUser.getPhone());
-        sliderLayout=(SliderLayout)this.findViewById(R.id.slider);
+        //sliderLayout=(SliderLayout)this.findViewById(R.id.slider);
         mService=Common.getApi();
         menus=(RecyclerView)this.findViewById(R.id.list_menu);
-        menus.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        menus.setLayoutManager(new GridLayoutManager(this,2));
+        /*
         mService.GetBanners().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<banner>>() {
             @Override
             public void accept(List<banner> banners) throws Exception {
@@ -127,7 +129,7 @@ public class HomeActivity extends AppCompatActivity
 
             }
         });
-
+*/
         mService.GetMenu().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<menu>>() {
             @Override
             public void accept(List<menu> menus_list) throws Exception {

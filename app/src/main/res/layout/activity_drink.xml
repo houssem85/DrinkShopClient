@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.programasoft.drinkshop.DrinkActivity"
     android:orientation="vertical"
-    android:background="@drawable/bg"
+    android:background="#eeeeee"
     >
     <FrameLayout
         android:layout_weight="2"
@@ -35,7 +35,9 @@
         android:id="@+id/list_drinks"
         android:layout_weight="6"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_margin="2dp"
+        >
 
     </android.support.v7.widget.RecyclerView>
 

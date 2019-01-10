@@ -5,10 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.programasoft.drinkshop.CartActivity"
-    android:background="@drawable/bg"
+    android:background="@color/white"
     android:orientation="vertical"
     android:id="@+id/rootLyout"
     >
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#B301a9e0"
+            app:popupTheme="@style/ToolbarColoredBackArrow"
+            app:theme="@style/ToolbarColoredBackArrow"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CART"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:id="@+id/toolbar_title" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_cart"
         android:layout_width="match_parent"
@@ -16,20 +42,46 @@
         android:layout_weight="1"
 
         ></android.support.v7.widget.RecyclerView>
-    <Button
-        android:layout_weight="0"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:text="PLACE ORDER"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="PlaceOrder"
-        />
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_margin="10sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:text="BACK"
+            android:onClick="back"
+            android:textColor="#9E9E9E"
+            android:background="@drawable/btn_round_white"
+            style="?android:attr/borderlessButtonStyle"
+            />
+        <Button
+            android:layout_margin="10sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:text="PLACE ORDER"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/btn_round_blue"
+            android:onClick="PlaceOrder"
+            style="?android:attr/borderlessButtonStyle"
+            />
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
