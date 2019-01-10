@@ -187,6 +187,6 @@ private IDrinkShopApi Mservice;
 
     public void back(View view) {
         Intent i=new Intent(this,HomeActivity.class);
-        
+        this.startActivity(i);
     }
 }
