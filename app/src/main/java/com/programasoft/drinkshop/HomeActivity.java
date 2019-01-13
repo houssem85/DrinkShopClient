@@ -270,8 +270,11 @@ public class HomeActivity extends AppCompatActivity
             finish();
             this.startActivity(new Intent(this,MainActivity.class));
 
-        }else {
+        }else if (id==R.id.Favorite){
             Intent i=new Intent(HomeActivity.this,FavoriteActivity.class);
+            HomeActivity.this.startActivity(i);
+        } else if (id==R.id.Orders){
+            Intent i=new Intent(HomeActivity.this,OrdersActivity.class);
             HomeActivity.this.startActivity(i);
         }
 

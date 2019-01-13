@@ -55,7 +55,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".CartActivity" />
         <activity android:name=".FavoriteActivity" />
-        <activity android:name=".SearchsActivity"></activity>
+        <activity android:name=".SearchsActivity" />
+        <activity android:name=".OrdersActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package com.programasoft.drinkshop.retrofit;
 
+import android.util.Base64;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.programasoft.drinkshop.Utils.Common;
@@ -29,14 +31,18 @@ public class RetrofitClient {
 
     public static Retrofit getClient(String BaseUrl)
     { if(retrofit==null)
-    {   Gson gson = new GsonBuilder().setLenient().create();
+    {  Gson gson = new GsonBuilder().setLenient().create();
         OkHttpClient.Builder okhttpClientBuilder = new OkHttpClient.Builder();
 
         okhttpClientBuilder.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
+                String username="houssem";
+                String passworld="123456789";
+                String base=username+":"+passworld;
+                String cle="Basic "+Base64.encodeToString(base.getBytes(),Base64.NO_WRAP);
                 Request request=chain.request();
-                Request.Builder builder= request.newBuilder().header("auth","houssem");
+                Request.Builder builder= request.newBuilder().header("Authorization",cle);
                 return chain.proceed(builder.build());
             }
         });
@@ -45,7 +51,7 @@ public class RetrofitClient {
         okhttpClientBuilder.connectTimeout(60, TimeUnit.SECONDS);
         okhttpClientBuilder.readTimeout(60, TimeUnit.SECONDS);
         okhttpClientBuilder.writeTimeout(60, TimeUnit.SECONDS);
-        Retrofit.Builder builder=new Retrofit.Builder().baseUrl(Common.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).client(okhttpClientBuilder.build()).addConverterFactory(ScalarsConverterFactory.create());
+        Retrofit.Builder builder=new Retrofit.Builder().baseUrl(Common.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).client(okhttpClientBuilder.build()).addConverterFactory(ScalarsConverterFactory.create());;
         retrofit=builder.build();
     }
 

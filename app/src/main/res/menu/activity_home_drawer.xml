@@ -16,6 +16,10 @@
                 android:icon="@drawable/download"
                 android:title="Download photo profil" />
             <item
+                android:id="@+id/Orders"
+                android:icon="@drawable/order"
+                android:title="Orders" />
+            <item
                 android:id="@+id/Favorite"
                 android:icon="@drawable/favorite_yes"
                 android:title="Favorites" />

@@ -14,7 +14,7 @@ public class order {
     private int sugar;
     private String link;
     private String comment;
-    private int id_user;
+    private String id_user;
     private String address;
 
     public int getId() {
@@ -89,11 +89,11 @@ public class order {
         this.comment = comment;
     }
 
-    public int getId_user() {
+    public String getId_user() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setId_user(String id_user) {
         this.id_user = id_user;
     }
 

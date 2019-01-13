@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    android:layout_margin="5dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp"
+            >
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="0dp"
+                android:text="#15"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:id="@+id/txt_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="20 dt"
+                android:textSize="20sp"
+                android:textColor="@color/colorAccent"
+                android:gravity="right"
+                android:paddingRight="10dp"
+                />
+
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="match_parent"
+            android:text="Order Status :............"
+            android:paddingLeft="15dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            />
+        <TextView
+            android:id="@+id/txt_comment"
+            android:layout_width="match_parent"
+            android:text="Comment :"
+            android:paddingLeft="15dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginBottom="10sp"
+            />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

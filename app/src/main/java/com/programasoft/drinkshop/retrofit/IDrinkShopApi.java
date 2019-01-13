@@ -3,6 +3,7 @@ package com.programasoft.drinkshop.retrofit;
 import com.programasoft.drinkshop.model.banner;
 import com.programasoft.drinkshop.model.checkExistUserResponse;
 import com.programasoft.drinkshop.model.drink;
+import com.programasoft.drinkshop.model.order;
 import com.programasoft.drinkshop.model.user;
 import com.programasoft.drinkshop.model.menu;
 
@@ -79,6 +80,8 @@ public interface IDrinkShopApi {
     @GET("user_avar/{image_name}")
     Call<ResponseBody> DowleadPhotoProfilStrea(@Path("image_name") String image_name);
 
+    @GET("GetOrdersByUser.php")
+    Call<List<order>> GetOrdersByUser(@Query("phone") String phone);
 
 
 }
