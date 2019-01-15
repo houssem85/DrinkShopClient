@@ -4,6 +4,8 @@ import com.programasoft.drinkshop.model.banner;
 import com.programasoft.drinkshop.model.checkExistUserResponse;
 import com.programasoft.drinkshop.model.drink;
 import com.programasoft.drinkshop.model.order;
+import com.programasoft.drinkshop.model.store;
+import com.programasoft.drinkshop.model.token;
 import com.programasoft.drinkshop.model.user;
 import com.programasoft.drinkshop.model.menu;
 
@@ -71,7 +73,7 @@ public interface IDrinkShopApi {
 
     @FormUrlEncoded
     @POST("InsertNewOrder.php")
-    Call<String> InsertNewOrder(@Field("status") boolean status,@Field("price") double price,@Field("amount") int amount,@Field("name") String name,@Field("ice") int ice,@Field("sugar") int sugar,@Field("link") String link,@Field("comment") String comment,@Field("id_user") String id_user,@Field("address") String address);
+    Call<String> InsertNewOrder(@Field("status") int status,@Field("price") double price,@Field("amount") int amount,@Field("name") String name,@Field("ice") int ice,@Field("sugar") int sugar,@Field("link") String link,@Field("comment") String comment,@Field("id_user") String id_user,@Field("address") String address);
 
     @GET("user_avar/{image_name}")
     Call<ResponseBody> DowleadPhotoProfil(@Path("image_name") String image_name);
@@ -80,8 +82,19 @@ public interface IDrinkShopApi {
     @GET("user_avar/{image_name}")
     Call<ResponseBody> DowleadPhotoProfilStrea(@Path("image_name") String image_name);
 
-    @GET("GetOrdersByUser.php")
-    Call<List<order>> GetOrdersByUser(@Query("phone") String phone);
+    @GET("GetOrdersByUserAndStatus.php")
+    Call<List<order>> GetOrdersByUserAndStatus(@Query("phone") String phone,@Query("status") int status);
 
+
+    @FormUrlEncoded
+    @POST("InsertUpdateToken.php")
+    Call<token> InsertUpdateToken(@Field("Phone") String Phone,@Field("Token") String Token , @Field("IsServerToken") boolean IsServerToken);
+
+    @FormUrlEncoded
+    @POST("UpdateStatusOrder.php")
+    Call<Boolean> UpdateStatusOrder(@Field("id") int id,@Field("status") int status);
+
+    @GET("GetNearbyStore.php")
+    Call<List<store>> GetNearbyStore(@Query("latitude") double latitude,@Query("longitude") double longitude);
 
 }

@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -41,16 +42,7 @@
 
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/txt_status"
-            android:layout_width="match_parent"
-            android:text="Order Status :............"
-            android:paddingLeft="15dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginBottom="10sp"
-            />
+
         <TextView
             android:id="@+id/txt_comment"
             android:layout_width="match_parent"
@@ -58,8 +50,90 @@
             android:paddingLeft="15dp"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:layout_marginBottom="10sp"
             />
+        <TextView
+            android:id="@+id/txt_detail"
+            android:layout_width="wrap_content"
+            android:text="Detail..."
+            android:paddingRight="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_gravity="right"
+            android:textColor="@color/colorAccent"
+            android:layout_marginBottom="5dp"
+            />
+        <LinearLayout
+            android:id="@+id/View_Forground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="80dp"
+                android:layout_height="115dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name prodiut"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:textStyle="bold"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="3.75dt"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Descrptoin"
+                    android:textSize="14sp" />
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CANCEL"
+                    android:background="@drawable/btn_round_blue"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="right"
+                    />
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 

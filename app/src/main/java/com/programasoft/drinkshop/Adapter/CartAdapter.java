@@ -28,6 +28,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
     public CartAdapter(Context contextCompat, List<cart> cartList) {
         this.contextCompat = contextCompat;
         this.cartList = cartList;
+
     }
 
     @NonNull

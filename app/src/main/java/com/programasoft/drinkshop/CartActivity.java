@@ -140,7 +140,7 @@ private IDrinkShopApi Mservice;
             public void onClick(DialogInterface dialog, int which) {
                String comment=txt_comment.getText().toString();
                String id_user=Common.CorrentUser.getPhone();
-               boolean status=false;
+               int status=0;
                String address;
                if((other_addr.isChecked() && txt_address.getText().toString().isEmpty()==false) || user_addr.isChecked()==true) {
                    if (user_addr.isChecked()) {

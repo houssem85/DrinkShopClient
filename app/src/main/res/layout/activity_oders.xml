@@ -15,7 +15,7 @@
         android:background="#B301a9e0"
         app:popupTheme="@style/ToolbarColoredBackArrow"
         app:theme="@style/ToolbarColoredBackArrow"
-
+        android:layout_weight="0"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -30,8 +30,22 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_orders"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
 
     </android.support.v7.widget.RecyclerView>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/button_navication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@color/colorAccent"
+        app:itemTextColor="@color/colorAccent"
+        app:menu="@menu/menu_status"
+        >
+
+    </android.support.design.widget.BottomNavigationView>
 
 </LinearLayout>

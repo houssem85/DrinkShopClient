@@ -6,7 +6,7 @@ package com.programasoft.drinkshop.model;
 
 public class order {
     private int id;
-    private boolean status;
+    private int status;
     private double price;
     private int amount;
     private String name;
@@ -25,11 +25,11 @@ public class order {
         this.id = id;
     }
 
-    public boolean isStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

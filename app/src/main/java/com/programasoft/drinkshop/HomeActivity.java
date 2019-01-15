@@ -15,6 +15,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.accountkit.AccountKit;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.programasoft.drinkshop.Adapter.MenuAdapter;
 import com.programasoft.drinkshop.Database.DataSource.CartRepository;
@@ -43,6 +46,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.programasoft.drinkshop.Utils.Common;
 import com.programasoft.drinkshop.model.banner;
+import com.programasoft.drinkshop.model.token;
 import com.programasoft.drinkshop.retrofit.IDrinkShopApi;
 import com.squareup.picasso.Picasso;
 
@@ -75,15 +79,16 @@ public class HomeActivity extends AppCompatActivity
     private RecyclerView menus;
     private NotificationBadge badge;
     private CircleImageView image_profil;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        InsertUpdateToken(FirebaseInstanceId.getInstance().getToken());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-
+        swipeRefreshLayout=(SwipeRefreshLayout)this.findViewById(R.id.SwipRefrech);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -132,14 +137,39 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 */
-        mService.GetMenu().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<menu>>() {
+        swipeRefreshLayout.post(new Runnable() {
             @Override
-            public void accept(List<menu> menus_list) throws Exception {
-            MenuAdapter menuAdapter=new MenuAdapter(getApplicationContext(),menus_list);
-            menus.setAdapter(menuAdapter);
+            public void run() {
+
+                mService.GetMenu().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<menu>>() {
+                    @Override
+                    public void accept(List<menu> menus_list) throws Exception {
+                        MenuAdapter menuAdapter=new MenuAdapter(getApplicationContext(),menus_list);
+                        menus.setAdapter(menuAdapter);
+
+                    }
+                });
+
+                }
+
+                });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                mService.GetMenu().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<menu>>() {
+                    @Override
+                    public void accept(List<menu> menus_list) throws Exception {
+                        MenuAdapter menuAdapter=new MenuAdapter(getApplicationContext(),menus_list);
+                        menus.setAdapter(menuAdapter);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
 
             }
         });
+
 
      //Ack permission for read storedg
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
@@ -276,6 +306,9 @@ public class HomeActivity extends AppCompatActivity
         } else if (id==R.id.Orders){
             Intent i=new Intent(HomeActivity.this,OrdersActivity.class);
             HomeActivity.this.startActivity(i);
+        }else if (id==R.id.nav_NearByStore){
+            Intent i=new Intent(HomeActivity.this,NearByStore.class);
+            HomeActivity.this.startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -391,6 +424,25 @@ public class HomeActivity extends AppCompatActivity
                 cursor.close();
         }
         return null;
+    }
+    private void InsertUpdateToken(String token){
+        if(Common.CorrentUser!=null) {
+            IDrinkShopApi api=Common.getApi();
+            api.InsertUpdateToken(Common.CorrentUser.getPhone(),token,false).enqueue(new Callback<com.programasoft.drinkshop.model.token>() {
+                @Override
+                public void onResponse(Call<token> call, Response<token> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<token> call, Throwable t) {
+
+                }
+            });
+
+        }
+
+
     }
 
 
